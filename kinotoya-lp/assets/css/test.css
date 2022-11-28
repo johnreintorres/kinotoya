@@ -1,0 +1,2173 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body{
+  overflow-x: hidden;
+  scroll-behavior: smooth
+}
+body{
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", verdana, "Osaka", "MS PGothic", Sans-Serif;
+  color: #40220f;
+
+}
+
+.pc{
+  display: block;
+}
+.sp{
+  display: none;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v20/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDTbtPY_Q.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v20/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDYbtPY_Q.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v20/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDZbtPY_Q.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v20/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+.header {
+  background: #fff100;
+  height: 80px;
+  justify-content: center;  
+  align-items: center;
+  display: flex;
+  position: relative; 
+}
+.header-title{
+  width: 131px;
+  height: 36px;
+}
+
+.menu-btn {
+  cursor: pointer;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  z-index: 99;
+}
+.bar1, .bar2, .bar3 {
+  height: 2px;
+  width: 30px;
+  transition: 0.3s;
+  margin: 9px;
+  background: #40220F;
+  transition: 0.4s;
+
+}
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/*OVERLAY*/
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:#fff100;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 5%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 5px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+.overlay-text{
+  border-top: 1px solid;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top:0px;
+  right: 5px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+li {
+  list-style-type: none;
+  list-style: none;
+}
+.overlay-header-title{
+  width: 131px;
+  height: 36px;
+  margin-bottom: 50px;
+}
+.overlay-links {
+  width: 320px;
+  margin: 0 auto 40px;
+}
+.overlay-items a {
+    color: #40220F;
+    display: block;
+    padding: 15px 0;
+    font-size: 26px;
+}
+.overlay-items {
+  border-bottom: 1px solid #40220F;
+  letter-spacing: 0.1em;
+  padding: 10px ;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  line-height: 1;
+  letter-spacing: 5px;
+  font-weight: 700;
+}
+
+.overlay-items-01 a {
+  color: #40220F;
+  display: block;
+  padding: 15px 0;
+  font-size: 26px;
+}
+.overlay-items-01 {
+border-bottom: 1px solid #40220F;
+border-top: 1px solid #40220F;
+letter-spacing: 0.1em;
+padding: 10px ;
+font-family: fot-tsukuardgothic-std, sans-serif;
+line-height: 1;
+letter-spacing: 5px;
+font-weight: 700;
+}
+.share{
+  color: #40220F;
+}
+.icons {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons-items {
+  margin: 0 10px;
+}
+.icons-items a {
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #41210F;
+
+}
+.icons-02 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons-items-02 {
+  margin: 0 10px;
+}
+.icons-items-02 a {
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+
+}
+/*Header*/
+.menu-btn-sp{
+  display: none;
+}
+.header-bg{
+  background-image: url(../images/header-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 675px;
+}
+.home-mv-title {
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  line-height: 1;
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  width: 100%;
+}
+.home-mv-title-line02 {
+  margin-top: 36px;
+}
+.kinotoya{
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.the-cake{
+  font-size: 100px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.home-mv-title-line01 {
+  letter-spacing: 18px;
+  text-indent: 10px;
+  font-size: 26px;
+}
+
+.first-abstract{
+  background: url(../images/White\ Abstract-01-01.png)no-repeat;
+  background-size: contain;
+  height: 85%;
+  margin-left: 64%;
+  top: -2vw;
+  width: 100%;
+  position: absolute;
+
+}
+
+.menu-abstract{
+  background-color: white;
+  border-radius: 50%;
+  padding: 20px;
+}
+.first-abstract-layout{
+  max-width: 600px;
+}
+.abstract-txt-layout{
+  margin-left: 5%;
+  padding-top: 8%;
+}
+.abstract-txt{
+  background: url(../images/txt01_04.png)no-repeat;
+  background-size: contain;
+  height: 250px;
+  margin-left:15%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  padding-right: 10px;
+}
+.abstract-txt-01{
+  background: url(../images/txt01_03.png)no-repeat;
+  background-size: contain;
+  height: 200px;
+  margin-left:18%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  padding-right: 10px;
+}
+.abstract-txt-02{
+  background: url(../images/txt01_02.png)no-repeat;
+  background-size: contain;
+  height: 300px;
+  margin-left:21%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  padding-right: 10px;
+}
+.abstract-txt-03{
+  background: url(../images/txt01_01.png)no-repeat;
+  background-size: contain;
+  height: 130px;
+  margin-left:24%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  padding-right: 10px;
+}
+
+.second-abstract{
+  background: url(../images/White\ Abstract-01-02.png)no-repeat;
+  background-size: contain;  
+  height: 40%;
+  top: 5vw;
+  width: 100%;
+  position: absolute;
+
+}
+.second-abstract-layout{
+  max-width: 600px;
+}
+.human-img-layout{
+  background: url(../images/human.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  margin-top: 15%;
+  margin-left: 2%;
+
+}
+.feeds-img-layout{
+  background: url(../images/feeds-02.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  margin-left: 2%;
+
+}
+.chicken-img-layout{
+  background: url(../images/chicken-03.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  margin-left:2%;
+
+}
+.chicken02-img-layout{
+  background: url(../images/chicken-03.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  margin-left:-5%;
+}
+.news{
+  background-color: #000000;
+  opacity: .8;
+  height: 100px;
+  margin-top: 9%;
+  float: right;
+  padding-bottom:20px;
+  padding-top:20px;
+  padding-right:40px;
+  padding-left:30px;
+  width:600px;
+}
+.news-first-layer{
+  display: flex;
+  justify-content: space-between;
+}
+.news-date{
+  color: #BDBDBD;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-weight:400;
+  line-height:21.6px;
+  padding-top:5px;
+  font-size:12px;
+  letter-spacing: 0;
+}
+.news-txt{
+  color: #fff100;
+  float:left;
+  font-family:"Playfair Display", serif;
+  font-weight:500;
+  font-size:22px;
+  letter-spacing:2px;
+  line-height:22px;
+}
+.news-txt-02{
+  color: #FFF;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:16px;
+  margin-top:8px;
+  font-weight:400;
+  letter-spacing: 0;
+  line-height:24px;
+  text-align:left;
+}
+
+
+.cupcake-layout{
+  display: flex;
+  padding-top: 230px;
+  max-width: 1500px;
+  justify-content: space-around;
+}
+.cupcake01-layout{
+  display: flex;
+  text-align: start;
+  flex-wrap: wrap;
+  max-width: 1500px;  
+  position: relative;
+}
+.cupcake02-layout{
+  display: flex;
+  padding-left: 200px;
+  text-align: start;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  position: relative;
+
+
+}
+.cupcake02-layout-sp{
+  display: none;
+}
+.cupcake-01{
+  background: url(../images/cupcake-01.jpg) no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 290px;
+}
+.cupcake-content{
+padding-top: 150px;  
+display: flex;
+width: 500px;
+flex-wrap: wrap;
+word-wrap: break-word;
+padding-left: 200px;
+padding-right: 10px;
+}
+.cupcake-txt-01{
+color: #40220F;
+font-size:16px;
+width: 500px;
+font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+font-weight:700;
+line-height:28.8px;
+letter-spacing:2px;
+margin-left: 15px;
+}
+.cupcake-txt-02{
+  font-size:24px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  color:rgb(64, 34, 15);
+  font-weight:700;
+  line-height:43.2px;
+  letter-spacing: 0;
+}
+.cupcake-txt-03{
+  padding-left: 15px;
+}
+.txt-01{
+  font-size:16px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-weight:500;
+  line-height:28.8px;
+  color:rgb(64, 34, 15);
+}
+.txt-02{
+  font-size:24px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-weight:700;
+  line-height:43.2px;
+    color:rgb(64, 34, 15);
+  font-weight:700;
+}
+.txt-03{
+  font-size:16px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-weight:500;
+  line-height:28.8px;
+  color:rgb(64, 34, 15);
+}
+.cupcake{
+  width: 290px;
+  padding-top: 250px;
+}
+
+.cupcake-02{
+  background: url(../images/cupcake-02.jpg) no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 290px;
+  position: absolute;
+}
+.yellow-bg{
+  height: 950px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.title{
+  margin-top: 150px;
+  font-size: 50px;
+  color: #40220F;
+  line-height: 1;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+.title-content{
+font-size: 26px;
+margin-bottom: 36px;
+font-weight: 700;
+line-height: 1.8;
+color: #40220F;
+opacity: 1;
+}
+.title-content-02 {
+  color: #40220F;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 30px;
+  font-weight: normal;
+  opacity: 0;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+}
+.egg{
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin: 50px;
+}
+.head{
+  width: 200px;
+  height: 300px;
+  margin: 0px;
+}
+.body{
+  width: 200px;
+  height: 300px;
+  margin-top: 10px;
+  position: absolute;
+}
+
+.yellow-bg svg{
+  transform: scaleY(-1);
+  z-index:-1;
+
+}
+.human-body{
+  display: flex;
+}
+.story-layout{
+display: flex;
+max-width: 2000px;
+flex-wrap: wrap;
+
+}
+.story-layout-sp{
+  display: none;
+}
+.story{
+  color: #fff100;
+  font-size: 122px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 13px;
+  margin-left: 100px;
+  font-weight: 700;
+  position: absolute;
+
+}
+.story-02{
+  letter-spacing: 8px;
+  font-size:46px;
+  top: 90px;
+  left: 150px;
+  font-weight: 600;
+  width: 500px;
+  position: absolute;
+  color:#40220F;
+}
+.crack-egg{
+  width: 500px;
+  height: 600px;
+
+}
+.crack-egg-layout{
+  display: flex;
+  align-items: flex-end; 
+  left:65%;
+  position: absolute;
+}
+.chicken-02{
+  height: 180px;
+  width: 200px;
+  margin-left: 150px;
+  display: flex;
+  margin-top: 60px;
+}
+.feeds{
+  position: absolute;
+  height: 180px;
+  width: 200px;
+  margin-left: 150px;
+  margin-top: 80px;
+}
+.story-content-layout{
+  display: flex;
+  margin-top: 200px;
+
+}
+.story-content{
+  color: black;
+  display: flex;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 2;
+  padding-right:40% ;
+
+}
+.cupcake-03-layout{
+  padding-left: 200px;
+  padding-top: 80px;
+}
+.cupcake-03{
+  width: 800px;
+  height: 400px;
+
+}
+.cupcake-04{
+  width: 350px;
+  margin-left: 100px;
+  padding-top: 250px;
+  left: 0;
+  position: absolute;
+}
+
+.second-bg{
+  height: 1200px;
+  display: flex;  
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 2000px;
+  position: relative;
+}
+.second-bg svg{
+  position: absolute;
+  z-index:-1;
+
+}
+.second-yellow-bg{
+  height: 1200px;
+  display: flex;
+  justify-content: center;
+  top: 0;
+}
+.second-yellow-bg svg{
+  transform: scaleY(-1);
+  z-index:-1;
+
+}
+.second-layout{
+  padding: 360px 5.2% 80px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+  width: 100%;
+
+}
+
+.white-abstract-layout{
+  max-width: 430px;
+  display: flex;
+  left:60%;
+  margin-top:5%;
+  position:absolute;
+}
+.white-abstract{
+  height: 390px;
+  width: 100%;
+}
+.abstract-text{
+  position: absolute;
+  top: 40%;
+  font-size: 46px;
+  font-family:fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  width: 600px;
+  color: #40220F;
+  line-height:46px;
+  letter-spacing: 8px;
+}
+.white-cake{
+  background: url(../images/white-cupcake.jpg) no-repeat;
+  background-size: contain;
+  width: 45%;
+  height: 400px;
+}
+.white-abstract-layout-02{
+  max-width: 300px;
+  top:-35%;
+  left: 70%;
+  position: relative;
+}
+.white-abstract-02{
+  height: 300px;
+  width: 100%;
+}
+
+.abstract-text-02{
+  position: absolute;
+  top: 80%;
+  font-size: 25px;
+  font-family:fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  width: 600px;
+  left: 10%;
+  color: #40220F;
+  line-height:1;
+  letter-spacing: 5px;
+  -webkit-transform: rotate(30deg); 
+   -moz-transform: rotate(-10deg);    
+}
+
+
+.white-cake-content-layout{
+  width: 40%;
+  margin-left: 5.2%;
+  margin-right: 5%;
+  position: relative;
+  max-width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 8%;
+}
+.white-cake-title{
+  font-size: 44px;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom:40px;
+  margin-top:40px;
+
+}
+
+.egg-chicken img {
+    max-width: 120px;
+    width: 10vw;
+    position: absolute;
+    top: 40%;
+    right: -10%;
+}
+
+.white-cake-desc {
+  letter-spacing: 2px;
+  padding-right: 20%;
+  max-width: 650px;
+  margin-bottom: 20px;
+
+}
+
+/*brown cake*/
+.third-layout{
+  padding: 360px 5.2% 80px;
+  display: flex;
+  width: 100%;
+
+}
+.brown-cake-content-layout{
+  padding-left:10%;
+  position: relative;
+  max-width:1500px;
+  flex-wrap:wrap;
+  padding-top: 50px;
+
+}
+.brown-cake-title{
+  font-size: 44px;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  padding-top: 5%;
+  line-height: 1.5;
+
+}
+.brown-cake-title-02{
+  font-size: 44px;
+  margin-bottom:20px;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+
+}
+.brown-cake-desc {
+  padding-right: 15%;
+  max-width: 700px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:2px;
+  line-height:28.8px;
+  color: #40220f;
+}
+.brown-cake{
+  background: url(../images/brown-cake-02.jpg) no-repeat;
+  background-size: contain;
+  width: 600px;
+  height: 400px;
+  position: relative;
+  
+}
+.brown-abstract-layout-02{
+  max-width: 300px;
+  top:-35%;
+  left: -10%;
+  position: absolute;
+}
+.brown-abstract-02{
+  width: 100%;
+  height: 300px;
+}
+.brown-abstract-text{
+  position: absolute;
+  margin-bottom:20px;
+  top: 35%;
+  left: 10%;
+  font-size: 36px;
+  font-family:fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  width: 600px;
+  color: #40220F;
+  
+}
+
+
+.abstract-text-03{
+  position: absolute;
+  top: 10%;
+  font-size: 25px;
+  font-family:fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  width: 600px;
+  left: 0%;
+  color: #40220F;
+  line-height:1;
+  letter-spacing: 5px;
+  -webkit-transform: rotate(-35deg); 
+   -moz-transform: rotate(-10deg);    
+}
+
+
+.white-abstract-layout-03{
+  max-width: 450px;
+  display: flex;
+  left:5%;
+  top:70%;
+  position:absolute;
+}
+.white-abstract-03{
+  height: 400px;
+  width: 100%;
+  transform: scaleX(-1);
+
+}
+.abstract-text-desc{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  font-size: 16px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;  font-weight: 700;
+  width: 600px;
+  font-weight: 500;
+  color: #40220F;
+  line-height:46px;
+  letter-spacing: 3px;
+
+}
+
+/*creamy cupcake*/
+.fourth-layout{
+  padding-top: 90px;
+  padding: 5.2% 80px;
+  padding-right: 0px;
+  display: flex;
+  max-width: 2000px;
+  width: 100%;
+
+}
+.cream-cake{
+  background: url(../images/cupcake-05.jpg) no-repeat;
+  background-size: contain;
+  width: 42%;
+  height: 400px;
+  position: relative;
+}
+.cream-abstract-layout-02{
+  max-width: 300px;
+  top:-35%;
+  left: 70%;
+  position: relative;
+}
+.cream-abstract-02{
+  height: 300px;
+  width: 100%;
+}
+
+.cream-text-02{
+  position: absolute;
+  top: 80%;
+  font-size: 25px;
+  font-family:fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  width: 600px;
+  left: 20%;
+  color: #40220F;
+  line-height:1;
+  letter-spacing: 5px;
+  -webkit-transform: rotate(30deg); 
+   -moz-transform: rotate(-10deg);    
+}
+.cream-cake-content-layout{
+  padding-left:10%;
+  position: relative;
+  max-width:1500px;
+  flex-wrap:wrap;
+  padding-top: 50px;
+}
+.cream-cake-title{
+  font-size: 44px;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+
+}
+.cream-cake-title-02{
+  font-size: 44px;
+  margin-bottom:20px;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+
+}
+.cream-cake-desc {
+  padding-right: 10%;
+  max-width: 700px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:2px;
+  line-height:28.8px;
+  color: #40220f;
+}
+/*Line up*/
+.lineup-layout{
+  display: flex;
+  max-width: 2000px;
+
+  }
+.lineup{
+  color: #fff100;
+  font-size: 122px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 13px;
+  margin-left: 100px;
+  font-weight: 700;
+  position: absolute;
+
+}
+.line-02{
+  letter-spacing: 8px;
+  font-size:46px;
+  top: 90px;
+  left: 10px;
+  font-weight: 600;
+  width: 500px;
+  position: absolute;
+  color:#40220F;
+}
+.lineup-cake-layout{
+  display: flex;
+  margin-left: 10px;
+  max-width: 2000px;
+  padding-top: 15%;
+}
+
+.lineup-cake{
+  border-radius: 50%;
+  width: 25vw;
+  height: 25vw;
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: 10px;
+}
+
+.home-lineup-listbox-txt {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+}
+.home-lineup-listbox-txt-h {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.6;
+
+}
+.home-lineup-listbox-txt-price {
+  font-size: 15px;
+}
+.home-lineup-listbox-txt-price > span {
+  font-size: 20px;
+  margin-right: 2px;
+  font-weight: 500;
+    line-height: 1.8;
+    color: #40220f;
+  }
+    .home-lineup-listbox-txt dl dt {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 15px;
+
+  }
+  .home-lineup-listbox-txt dl dd {
+    display: inline;
+}
+.home-lineup-listbox-txt dl {
+  font-size: 15px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  line-height:27px;
+}
+
+/*Farmer Layout*/
+.farmer-layout{
+  background-color: #fff100;
+  height: 500px;
+  width: 80%;
+  margin-top: 10%;
+}
+.farmer-chicken-layout
+{
+  position: absolute;
+  margin-top: -5%;
+  margin-left: 55%;
+  max-width: 650px;
+  display: flex;
+}
+.farmer-chicken{
+  width: 100%;
+}
+.farmer{
+  color: white;
+  font-size: 130px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 10px;
+  margin-left: 100px;
+  font-weight: 700;
+  padding-top: 20px;
+  position: absolute;
+
+}
+.farmer-02{
+  letter-spacing: 8px;
+  font-size:35px;
+  top: 110px;
+  left: 60px;
+  font-weight: 600;
+  width: 500px;
+  position: absolute;
+  color:#40220F;
+}
+.farmer-03{
+  letter-spacing: 8px;
+  font-size:35px;
+  top: 165px;
+  left: 60px;
+  font-weight: 600;
+  width: 500px;
+  position: absolute;
+  color:#40220F;
+}
+.farmer-desc{
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-size:16px;
+  font-weight:500;
+  line-height:28.8px;
+  margin-block-end:20px;
+  color: #40220f;
+  padding-right: 50%;
+  padding-left: 5%;
+  padding-top: 8%;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+}
+.icon{
+  position: absolute;
+  width:100px;
+  top: 25%;
+  left: 25%;
+}
+.home-farmer-brand {
+  margin: -70px 5.2% 0;
+  padding: 70px 7.4%;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.home-farmer-brand {
+  background-color: #fff;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+}
+.k-logo{
+  margin-right: 12%;
+  max-width: 128px;
+}
+.home-farmer-brand-txt h3 {
+  letter-spacing: 4px;
+  font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+.home-farmer-brand-txt p {
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  font-weight:500;
+  font-size:16px;
+  max-width: 700px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+}
+/*Shop Areea*/
+.shop-layout{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  padding-bottom:5%;
+}
+.shop{
+  color: #fff100;
+  font-size: 122px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 13px;
+  font-weight: 700;
+  position: absolute;
+
+}
+.shop-02{
+  letter-spacing: 8px;
+  font-size:46px;
+  top: 80px;
+  font-weight:700;
+  margin-bottom:60px;
+  color:#40220F;
+  position: relative;
+}
+.home-shop {
+  padding: 150px 5.2% 86px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+  justify-content: center;
+}
+
+.home-shop-info {
+  display: table;
+  margin-bottom: 80px;
+  width: 100%;
+
+}
+.home-shop-info-img {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 50px;
+  background-color: #f5f1ed;
+  width:100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.home-shop-info-txt {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: justify;
+  padding-left: 100px;
+  padding-right: 10px;
+  height: auto;
+  width: 50%;
+  background-color: #40220f;
+  color: #fff;
+}
+.home-shop-info-txt h2{
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-bottom: 20px;
+  line-height:43.2px;
+  color:rgb(255, 255, 255);
+}
+.home-shop-info-txt p{
+  font-size:16px;
+  font-weight: 500;  
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  line-height:29.2px;
+  letter-spacing: 1px;
+  max-width:500px;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+/* .tel{
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:16px;
+  font-weight:500;
+  line-height:29.2px;
+  letter-spacing: 1px;
+
+}
+.time{
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:16px;
+  font-weight:500;
+  line-height:29.2px;
+  letter-spacing: 1px;
+
+} */
+.map-layout{
+  max-width: 2000px;
+  display: flex;
+  justify-content: center;
+
+}
+.map-02{
+width: auto;
+border: 5px solid #fff100;
+height: 500px;
+margin-left: 40%;
+}
+.the-cake-logo{
+  padding: 5%;
+  background-color: #fff100;
+  width: 25%;
+  display: flex;
+  left: 12%;
+  margin-top: 3%;
+  position: absolute;
+}
+.map-01-layout{
+display: flex;
+max-width: auto;
+flex-wrap: wrap;
+margin-top: 24%;
+left: 12%;
+position: absolute;
+}
+.map-01-content{
+  font-size:14px;
+  font-weight:500;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  float:left;
+  margin-right: 50px;
+  color:rgb(64, 34, 15);
+}
+
+.map-01{
+  width: 7vw;
+}
+/*FOOTER*/
+.footer-padding{
+  padding-left: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+}
+.footer-layout{
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.footer-bg{
+  background-color: #fff100;
+  height: auto;
+  max-width: 2000px;
+
+}
+.logo02-layout{
+  max-width: 180px;
+}
+.logo-02{
+  height: 46px;
+  width: 100%;
+}
+.mod-footer-top-t-menu {
+  text-align: left;
+}
+.mod-footer-top-t-menu li {
+  display: inline-block;
+  position: relative;
+}
+li {
+  list-style-type: none;
+  list-style: none;
+}
+.mod-footer-top-t-menu li:before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: #40220f;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotateZ(45deg);
+  box-shadow: 0 0 black;
+}
+.mod-footer-top-t-menu li a {
+  padding: 0 2rem;
+  font-size: 16px;
+  color: #40220f;
+}
+.mod-footer-top-t-menu li a {
+  display: block;
+}
+.mod-footer-top-t-menu li span {
+  position: relative;
+  display: inline-block;
+}
+.mod-footer-top-t-menu li span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #40220F;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  
+}
+.footer-layout-02{
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  max-width: 2000px;
+}
+.footer-logo-01{
+  max-width: 40px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-right: 80px;
+
+}
+.address{
+  margin-right: 50px;
+  line-height:28.8px;
+  font-weight:500;
+  font-size:16px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+}
+
+.logo-02-align{
+  display: flex;
+}
+.apple, .language, .fb, .twitter, .line{
+  width: 100%;
+  height: 40px;
+}
+.fb{
+margin-right: 10px;
+}
+.logo-title{
+  padding-right: 10px;
+}
+.media-pc{
+  display: flex;
+  align-items: center;
+} 
+.media-sp{
+  display: none;
+  
+}
+
+/*last Footer*/
+.last-footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.kinotoya-logo-layout{
+  max-width:67px;
+  margin: auto;
+}
+.kinotoya-logo{
+  height:66px;
+  width: 100%;
+}
+.copyright{
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  color:rgb(26, 26, 26);
+  font-size:14px;
+  font-weight:500;
+  line-height:25.2px;
+  padding-top:30px;
+
+}
+@media only screen and (max-width:600px){
+  .cupcake01-layout{
+    padding-bottom: 30%;
+  }
+}
+@media only screen and (max-width:900px){
+.first-abstract{
+  display: none;
+}
+.kinotoya{
+  font-size: 20px;
+}
+.the-cake{
+  font-size: 40px;
+}
+.second-abstract-layout{
+  display: none;
+}
+.home-mv-title {
+  top: 25%;
+}
+.home-mv-title-line01 {
+  font-size: 16px;
+}
+.news{
+  display: none;
+}
+.cupcake-content{
+padding-top: 250px;  
+padding-left: 10px;
+padding-right: 10px;
+width: auto;
+
+}
+.cupcake-txt-03{
+  padding-left: 20px;
+}
+
+.cupcake-layout{
+  padding-top: 60px;
+  flex-wrap: wrap;
+
+}
+.cupcake02-layout{
+  display: none;
+
+}
+
+.cupcake02-layout-sp{
+  padding-top: 0%;
+  display: block;
+  padding-left:0% ;
+}
+.cupcake-content-sp{
+  padding-top: 250px;  
+  padding-left: 0px;
+  padding-right: 10px;
+  width: auto;
+
+  }
+
+.cupcake-txt-01-sp{
+color: #40220F;
+font-size:16px;
+font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+font-weight:700;
+line-height:28.8px;
+letter-spacing:2px;
+margin-left: 0;
+}
+.cupcake-txt-02-sp{
+  font-size:24px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  color:rgb(64, 34, 15);
+  font-weight:700;
+  line-height:43.2px;
+  letter-spacing: 0;
+}
+.cupcake-txt-03-sp{
+  padding-left: 0px;
+}
+.title-layout{
+  padding-top: 100px;
+  }
+  
+.header-bg{
+  height: 300px;
+}
+.header {
+  background: #fff100;
+  height: 80px;
+  justify-content: center;  
+  align-items: center;
+  display: flex;
+  position: relative; 
+}
+.header-title{
+  width: 131px;
+  height: 36px;
+}
+.menu-btn{
+  display: none;
+}
+.menu-abstract{
+  background-color: transparent;
+  border-radius: 0%;
+  padding: 0px;
+}
+.menu-btn-sp{
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 1%;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  z-index: 99;
+}
+.overlay {
+  height: 0%;
+  width: auto;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:#fff100;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 2%;
+  width: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+li {
+  list-style-type: none;
+  list-style: none;
+}
+.overlay-header-title{
+  width: 131px;
+  height: 36px;
+  margin-bottom: 50px;
+}
+.overlay-links {
+  width: 320px;
+  margin: 0 auto 40px;
+}
+.overlay-items a {
+    color: #40220F;
+    display: block;
+    padding: 15px 0;
+    font-size: 26px;
+}
+
+.share{
+  color: #40220F;
+}
+.icons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons-items {
+  margin: 0 10px;
+}
+.icons-items a {
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #41210F;
+
+}
+.icons-02 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons-items-02 {
+  margin: 0 10px;
+}
+.icons-items-02 a {
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+
+}
+.yellow-bg{
+  height: 1400px ;
+}
+.title{
+  font-size: 30px;
+  font-weight: 900;
+
+}
+.title-content{
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.egg{
+  display: none;
+}
+.human-body{
+  display: none;
+}
+
+.title-content-02 {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  letter-spacing: 0;
+}
+.story-layout{
+  display: flex;
+  max-width: 2000px;
+  flex-wrap: wrap;
+  }
+  .story{
+    color: #fff100;
+    font-size: 60px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    letter-spacing: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+    position: absolute;
+  
+  }
+  .story-02{
+    letter-spacing: 1px;
+    font-size:20px;
+    top: 40px;
+    left:15%;
+    font-weight: 600;
+    width: auto;
+    position: absolute;
+    color:#40220F;
+  }
+  .crack-egg{
+    width: 500px;
+    height: 600px;
+    padding-right: 20px;
+  }
+  .crack-egg-layout{
+    display: flex;
+    align-items: flex-end; 
+    left:65%;
+    display: none;
+    position: absolute;
+  }
+  .chicken-02{
+    display: none;
+  }
+  .feeds{
+    display: none;
+  }
+  .story-content-layout{
+    display: flex;
+    margin-top: 100px;
+  
+  }
+  .story-content{
+    color: black;
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0px;
+    text-align: justify;
+    line-height: 2;
+    padding-right:20px ;
+    padding-left:20px ;
+  }
+  .cupcake-03-layout{
+    padding-left: 200px;
+    padding-top: 80px;
+  }
+  .cupcake-03{
+    width: 100%;
+    height: auto;
+  
+  }
+  .cupcake-04{
+    display: none;
+  }
+  .cupcake-03-layout{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+.white-abstract-layout{
+  display: none;
+}
+.white-abstract-layout-02{
+  display: none;
+}
+.white-cake{
+  background: url(../images/white-cupcake.jpg) no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+}
+.second-layout{
+  padding-top: 40%;
+  padding-bottom: 0px;
+
+}
+.egg-chicken{
+  display: none;
+}
+.white-cake-title{
+  font-size: 30px;
+  text-align: center;
+}
+.white-cake-content-layout{
+  width: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.white-cake-desc {
+  letter-spacing: 1px;
+  padding-right: 0%;
+  margin-bottom: 20px;
+
+}
+.white-abstract-layout-03{
+  display: none;
+}
+.third-layout{
+  padding-top:40px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.brown-abstract-layout-02{
+  display: none;
+}
+.brown-cake-content-layout{
+  padding-left:5%;
+  padding-right:5%;
+  position: relative;
+  max-width:2000px;
+  flex-wrap:wrap;
+  padding-top: 10px;
+
+}
+.brown-cake-title{
+  font-size: 30px;
+}
+.brown-cake-title-02{
+  font-size: 25px;
+}
+.brown-cake-desc {
+  padding-right: 0%;
+  padding-bottom: 20%;
+ 
+}
+.brown-cake{
+  background: url(../images/brown-cake-02.jpg) no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+
+}
+.fourth-layout{
+  padding-top: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+  width: 100%;
+
+}
+.cream-abstract-layout-02{
+  display: none;
+}
+.cream-cake{
+  background: url(../images/cupcake-05.jpg) no-repeat;
+  background-size: contain;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+
+}
+.cream-cake-title{
+  font-size: 30px;
+}
+.cream-cake-title-02{
+  font-size: 25px;
+}
+.cream-cake-content-layout{
+  padding-left:5%;
+  padding-right:5%;
+  position: relative;
+  max-width:2000px;
+  flex-wrap:wrap;
+  padding-top: 10px;
+}
+.cream-cake-desc {
+  padding-right: 0%;
+  padding-bottom: 20%;
+}
+.second-yellow-bg{
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  top: 0;
+}
+.lineup-layout{
+  margin-right: 5%;
+  margin-left: 5%;
+  flex-wrap: wrap;  
+}
+.lineup{
+  color: #fff100;
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 13px;
+  margin-left: 10px;
+  font-weight: 700;
+  position: absolute;
+
+}
+.line-02{
+  letter-spacing: 8px;
+  font-size:20px;
+  top: 40px;
+  left: 35px;
+  font-weight: 600;
+  width: auto;
+  position: absolute;
+  color:#40220F;
+}
+.lineup-cake-layout{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0px;
+  max-width: 2000px;
+  padding-top: 30%;
+  justify-content: center;
+  text-align: center;
+}
+.lineup-cake{
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.home-lineup-listbox-txt {
+  padding-left: 0px;
+  padding-top: 10%;
+  padding-right: 0px;
+}
+.home-lineup-listbox-txt-h {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.6;
+
+}
+.home-lineup-listbox-txt-price {
+  font-size: 15px;
+}
+.home-lineup-listbox-txt-price > span {
+  font-size: 20px;
+  margin-right: 2px;
+  font-weight: 500;
+    line-height: 1.8;
+    color: #40220f;
+  }
+.home-lineup-listbox-txt dl dt {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 15px;
+
+}
+.home-lineup-listbox-txt dl dd {
+display: inline;
+}
+.home-lineup-listbox-txt dl {
+  font-size: 15px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  line-height:27px;
+}
+
+.farmer-layout{
+  height: 600px;
+  width: 100%;
+  margin-top: 20%;
+  margin-bottom: 5%;
+
+}
+.farmer-chicken-layout
+{
+ display: none;
+}
+.farmer{
+  color: white;
+  font-size: 60px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 10px;
+  margin-left: 10px;
+  font-weight: 700;
+  position: absolute;
+
+
+}
+.farmer-02{
+  font-size:25px;
+  top: 60px;
+  left: -100px;
+  width: auto ;
+}
+.farmer-03{
+  font-size:25px;
+  top: 90px;
+  left: -100px;
+  width: auto ;
+
+}
+.farmer-desc{
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-size:16px;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-top: 20%;
+}
+.icon{
+  display: none;
+}
+.home-farmer-brand {
+  background-color: #fff;
+  position: relative;
+  z-index: 3;
+}
+.k-logo{
+  margin-right: 12%;
+  max-width: 128px;
+}
+.home-farmer-brand-txt h3 {
+  letter-spacing: 4px;
+  font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+.home-farmer-brand-txt p {
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  font-weight:500;
+  font-size:16px;
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+}
+
+.shop-layout{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  padding-bottom:5%;
+}
+.shop{
+  color: #fff100;
+  font-size: 70px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  letter-spacing: 6px;
+  font-weight: 700;
+  position: absolute;
+
+}
+.shop-02{
+  letter-spacing: 8px;
+  font-size:20px;
+  top: 50px;
+  font-weight:700;
+  margin-bottom:60px;
+  color:#40220F;
+  position: relative;
+}
+.home-shop{
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.home-shop-info {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.home-shop-info-img {
+
+  padding: 10px;
+  width:100%;
+  height: auto;
+  background-size: cover;
+}
+
+.home-shop-info-txt {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: auto;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #40220f;
+  color: #fff;
+}
+.home-shop-info-txt h2{
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:1px;
+  margin-bottom: 10px;
+
+}
+.home-shop-info-txt p{
+  font-size:14px;
+  font-weight: 500;  
+  font-family:"Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, verdana, Osaka, "MS PGothic", sans-serif;
+  letter-spacing: 1px;
+  max-width:500px;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.the-cake-logo{
+  display: none;
+}
+
+.map-01-content{
+  display: none;
+}
+.map-01{
+  display: none;
+}
+
+.map-02{
+  width: 100%;
+  border: 5px solid #fff100;
+  height: auto;
+  margin-left: 0%;
+  }
+  .logo02-layout{
+    padding-bottom: 20px;
+  }
+  .mod-footer-top-t-menu li:before {
+    display: none;
+  }
+  .media-pc{
+    display: none;
+  }
+  .media-sp{
+    display: block;
+    margin-right: 20%;
+  }
+}
+@media only screen and (max-width:1000px){
+  .first-abstract{
+    display: none;
+  }
+  .second-abstract-layout{
+    display: none;
+  }
+  .cupcake-layout{
+justify-content: center;
+  }
+}
